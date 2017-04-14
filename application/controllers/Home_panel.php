@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Database_model extends CI_Controller {
+class Home_panel extends CI_Controller {
 
 	function __construct(){
 
@@ -26,6 +26,10 @@ class Database_model extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->db->insert("Hola");
+
+
+$this->load->view('home_panel');
+
 	}
+
 }

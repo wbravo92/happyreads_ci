@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Panel extends CI_Controller {
+class Login_model extends CI_Controller {
 
 	function __construct(){
 
@@ -24,33 +24,25 @@ class Panel extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function login($correo,$contrasena)
 	{
-	
-		$this->load->view('head');
-		$this->load->view('panel');
-		$this->load->view('footer');
 
 
-$this->load->model('login_model');
+$this->db->where("correo",$correo);
+$this->db->where("contrasena",$contrasena);
+$this->db->where("activo",1);
+$valores=$this->db->get("login");
 
-if($_POST){
 
-if($this->login_model->login($_POST["correo"],$_POST["contrasena"])){
 
-	redirect('home_panel');
-	}else{
-redirect('Uruario_no_existe');
-		//redirect(base_url() );
-	}	
-	
+if($valores->num_rows()>0){
+
+return true;
+
+}else{
+	return false;
 }
 
 
-
-
+	}
 }
-}
-
-?>
-
