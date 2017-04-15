@@ -28,7 +28,7 @@ class Panel extends CI_Controller {
 	{
 	
 		$this->load->view('head');
-		$this->load->view('panel');
+		$this->load->view('panel_view');
 		$this->load->view('footer');
 
 
@@ -50,6 +50,15 @@ redirect('Uruario_no_existe');
 
 
 }
+
+public function cerrarsesion(){
+$this->session->sess_destroy();
+header('Location: ' . base_url());
+
+}
+
+
+
 }
 
 ?>

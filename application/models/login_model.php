@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login_model extends CI_Controller {
+class Login_model extends CI_Model  {
 
 	function __construct(){
 
 	parent::__construct();
-	$this->load->database();
+
 }
 
 	/**
@@ -28,20 +28,44 @@ class Login_model extends CI_Controller {
 	{
 
 
-$this->db->where("correo",$correo);
-$this->db->where("contrasena",$contrasena);
-$this->db->where("activo",1);
-$valores=$this->db->get("login");
+
+$resultado = $this->db->query("SELECT a.nombre,a.correo,a.contrasena,b.nombre as tipo
+							FROM login a
+							INNER JOIN login_tipo b on a.tipo=b.idLogin
+							WHERE a.activo=1 
+							AND a.correo='$correo' AND a.contrasena='$contrasena' LIMIT 1;");
 
 
+if($resultado->num_rows()>0){
 
-if($valores->num_rows()>0){
+foreach ($resultado->result_array() as $row)
+{
+
+$usuario_data = array(
+   'nombre' => $row['nombre'],
+   'tipo' => $row['tipo'],
+   'logueado' => TRUE
+);
+$this->session->set_userdata($usuario_data);
+
+}
 
 return true;
 
 }else{
 	return false;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 	}

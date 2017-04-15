@@ -27,8 +27,10 @@ class Home_panel extends CI_Controller {
 	public function index()
 	{
 
-
+$this->load->view('head');
+$this->load->view('navbar');
 $this->load->view('home_panel');
+$this->load->view('footer');
 
 	}
 

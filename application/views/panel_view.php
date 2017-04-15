@@ -1,3 +1,11 @@
+<?php if($this->session->userdata('nombre')){
+
+  redirect('home_panel');
+}
+
+
+?>
+
 <body id="body-config">
 
    <div class="container">
