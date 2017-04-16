@@ -100,9 +100,9 @@ foreach ($resultado22->result_array() as $row){
     
 <!--Actualizar-->
     
-     <form id="formularioUsuarios" method="POST" action="actualizarUsuarios.php">
+  <form id="formularioUsuarios" method="POST" action="<?php echo base_url()?>usuarios/actualizarUsuario">
                 
- <div id="lawea" class="btn btn-danger pull-right" data-toggle="modal" data-target="#usuarios"> <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div><br>
+ <div class="btn btn-danger pull-right" data-toggle="modal" data-target="#usuarios"> <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div><br>
                  
        <div class="form-group"> 
        <label for="inputnombre">Nombre Usuario: </label>
@@ -222,7 +222,7 @@ foreach ($resultado22->result_array() as $row){
          ?>
          <input type="text" hidden="hidden" name="id" value='<?php echo $_GET["id"]?>'>
          
-          <button id="btnformulario" type="button" class="btn btn-sucess">Guardar</button>
+          <button id="btnformulario" type="submit" class="btn btn-sucess">Guardar</button>
       </form>
 
 </div>
@@ -272,7 +272,7 @@ foreach ($resultado22->result_array() as $row){
     <div class="modal-dialog">
       
       <!--action="usuarios.php"-->
-       <form method="post" action="eliminarUsuarios.php">
+       <form id="eliminar_usuario" method="POST" action="<?php echo base_url()?>usuarios/eliminarUsuario">
        
         <div class="modal-content">
             <div class="modal-header">
@@ -301,7 +301,7 @@ foreach ($resultado22->result_array() as $row){
 <p style="text-align:center;padding: 30px 30px;">¿Esta seguro de querer eliminar el registro Nº: <?php echo $_GET["id"]?></p> 
        
        
-        <input name="borrarNombre" type="hidden" id="inputnombre3" class="form-control" placeholder="Ingresa tu nombre" required="required" autofocus value="<?php echo $_GET['id']?>">
+        <input name="borrarNombre" type="hidden" id="inputnombre3" class="form-control" required="required" autofocus value="<?php echo $_GET['id']?>">
       </div>
             
             </div>        

@@ -27,7 +27,36 @@ class Usuarios_model extends CI_Model  {
 			return true;
 		}else{
 
-			return false();
+			return false;
+		}
+		
+} 
+
+	public function borrarUsuario($data){
+
+		$this->db->delete("login",$data);
+
+		if($this->db->affected_rows()>0){
+
+			return true;
+		}else{
+
+			return false;
+		}
+		
+}   
+
+	public function actualizarUsuario($id,$data){
+
+
+        $this->db->where('idLogin',$id);
+        $this->db->update('login', $data); 
+
+		if($this->db->affected_rows()>0){
+			return true;
+		}else{
+
+			return false;
 		}
 		
 }    

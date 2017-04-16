@@ -49,20 +49,46 @@ $nombre=$this->input->post("agregarNombre");
 
 $array=array("nombre"=>$nombre);
 
-
 if($this->Usuarios_model->insertarUsuario($array)){
-
-	echo "registro Guardado";
-
+echo "Usuario Agregado con exito";
 
 }else{
-	echo "Error al guardar";
+	echo "Error al agregar";
+}
 }
 
+public function eliminarUsuario(){
+$id=$this->input->post("borrarNombre");
 
+$array=array("idLogin"=>$id);
 
+if($this->Usuarios_model->borrarUsuario($array)){
+echo "Usuario Borrado con exito";
+}else{
+	echo "Error al borrar";
+}
 }
 
+public function actualizarUsuario(){
+$id=$this->input->post("id");
+$nombre=$this->input->post("nombre");
+$email=$this->input->post("email");
+$contrasena=$this->input->post("contrasena");
+$tipo=$this->input->post("tipo");
+$activo=$this->input->post("activo");
 
+$array=array(
+        	"nombre"=>$nombre,
+ 			"correo"=>$email,
+ 			"contrasena"=>$contrasena,
+ 			"tipo"=>$tipo,
+ 			"activo"=>$activo
+			 );
 
+if($this->Usuarios_model->actualizarUsuario($id,$array)){
+echo "Usuario Actualizado con exito";
+}else{
+	echo "Error al Actualizar";
+}
+}
 }

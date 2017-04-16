@@ -37,7 +37,6 @@ $this->load->model('login_model');
 if($_POST){
 
 if($this->login_model->login($_POST["correo"],$_POST["contrasena"])){
-
 	redirect('home_panel');
 	}else{
 redirect('Uruario_no_existe');
