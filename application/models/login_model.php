@@ -56,17 +56,41 @@ return true;
 	return false;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 	}
+
+
+    
+public function totalUsuarios(){
+
+
+$query="SELECT count(*) as total from login Limit 1";
+$resultado=$this->db->query($query);
+
+
+
+foreach ($resultado->result_array() as $row)
+{
+return $row['total'];
 }
+}
+
+
+public function listarUsuarios($empezar_desde,$cantidadPorPagina,$tipo){    
+if($tipo=="Maestro"){
+return $this->db->query("SELECT idLogin,nombre FROM login limit $empezar_desde,$cantidadPorPagina");
+}
+if($tipo=="Administrador"){
+return $this->db->query("SELECT idLogin,nombre FROM login where tipo !=1 limit $empezar_desde,$cantidadPorPagina"); 
+}
+
+}
+
+public function cargaDetalleUsuarios($id){
+$resultado = $this->db->query("SELECT * FROM login where idLogin=$id limit 1");  
+return $resultado;
+}
+
+
+
+}
+

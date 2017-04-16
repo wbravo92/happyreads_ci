@@ -1,3 +1,9 @@
+<?php
+if(($this->session->userdata('nombre'))==""){
+redirect(base_url());
+}
+?>
+ 
 
  <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -44,9 +50,9 @@
             
             if($this->session->userdata('tipo')=='Maestro' || $this->session->userdata('tipo')=='Administrador'){
             
-            echo " <a style='display:block' href='usuarios.php'>Panel de usuarios</a>";
-             echo " <a style='display:block' href='autores.php'>Agregar Autores</a>";
-             echo " <a style='display:block' href='#'>Agregar Libros</a>";
+            echo " <a style='display:block' href='".base_url()."usuarios'>Panel de usuarios</a>";
+             echo " <a style='display:block' href=''".base_url()."autores'>Agregar Autores</a>";
+             echo " <a style='display:block' href='".base_url()."libros'>Agregar Libros</a>";
             }else{
         
               echo "
@@ -59,8 +65,7 @@
             }
             
             ?>
-               
-            
+                      
             </div>
             
             <div class="modal-footer">
